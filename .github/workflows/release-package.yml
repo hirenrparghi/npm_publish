@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npx npm@6 publish ${{ github.workspace }}/modules/
+      - run: npx npm@6 publish ${{ github.workspace }}/modules/ --access public $(ls *.tgz)      
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

@@ -34,9 +34,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: download published package
+        if: always
         run: |
           npm config set @hirenrparghi:registry https://npm.pkg.github.com
-          npm i @hirenrparghi/npm-publish@1.0.0  
+          npm i @hirenrparghi/npm-publish@1.0.4
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
       - name: check package

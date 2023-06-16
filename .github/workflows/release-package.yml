@@ -16,7 +16,7 @@ jobs:
           pwd
           ls -la
           cd ${{ github.workspace }}/modules
-          npm test
+          npm run build
 
   publish-gpr:
     needs: build

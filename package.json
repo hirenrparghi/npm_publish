@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/hirenrparghi/npm_publish.git"
   },
+  "publishConfig": {
+   "@hirenrparghi:registry": "https://npm.pkg.github.com"
+ },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hirenrparghi/npm_publish/issues"
   },
   "homepage": "https://github.com/hirenrparghi/npm_publish#readme"
-},
-"publishConfig": {
-   "@hirenrparghi:registry": "https://npm.pkg.github.com"
- }
+}
+

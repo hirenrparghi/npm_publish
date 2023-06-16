@@ -12,11 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16        
-      - run: |
-          pwd
-          ls -la
-          cd ${{ github.workspace }}/modules
-          npm run build
+      - name: Build package
+        working-directory: ${{ github.workspace }}/modules
+        run: npm run build
 
   publish-gpr:
     needs: build

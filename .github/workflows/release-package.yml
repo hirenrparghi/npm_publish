@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: |
       - run: zip Modules.zip ./* -r        
-      - run: npm publish Modules.zip
+      - run: npm publish ./Modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: download published package

@@ -14,11 +14,22 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm test
-      - run: npm ci
-      - run: |
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci      
       - run: zip modules.zip ./* -r        
-#       - run: npm publish ./modules.zip --registry=https://npm.pkg.github.com
-      - run: npx npm@6 publish modules.zip --registry=https://npm.pkg.github.com
+      - run: npx npm@6 publish ./modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

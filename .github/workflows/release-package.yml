@@ -28,12 +28,11 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm ci      
-      - run: zip modules.zip ./* -r        
-      - run: npx npm@6 publish ./modules.zip
+      - run: npx npm@6 publish 
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   call-workflow:
-   needs: build
+   needs: publish-gpr
    uses: hirenrparghi/reuse/.github/workflows/myworkflow.yml@main
          

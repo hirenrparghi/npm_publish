@@ -14,7 +14,6 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm test
-      - run: zip Modules.zip ./* -r
 
   publish-gpr:
     needs: build
@@ -30,9 +29,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: |
-          pwd
-          ls -la          
-      - run: npm publish
+      - run: zip Modules.zip ./* -r        
+      - run: npm publish Modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: download published package

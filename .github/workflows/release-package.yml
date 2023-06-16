@@ -11,7 +11,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16        
+          node-version: 16    
+      - name: install dep
+        run: |
+          npm ci
       - name: Build package
         working-directory: ${{ github.workspace }}/modules
         run: npm run build

@@ -15,7 +15,7 @@ jobs:
       - run: |
           pwd
           ls -la
-          cd modules
+          cd ${{ github.workspace }}/modules
           npm ci
           npm test
 

@@ -1,6 +1,6 @@
 {
   "name": "@hirenrparghi/npm-publish",
-  "version": "1.0.0",
+  "version": "1.5.9",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/hirenrparghi/npm_publish.git"
   },
+  "publishConfig": {
+   "@hirenrparghi:registry": "https://npm.pkg.github.com"
+ },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -17,3 +20,4 @@
   },
   "homepage": "https://github.com/hirenrparghi/npm_publish#readme"
 }
+

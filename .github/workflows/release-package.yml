@@ -18,7 +18,7 @@ jobs:
       - run: |
       - run: zip modules.zip ./* -r        
 #       - run: npm publish ./modules.zip --registry=https://npm.pkg.github.com
-      - run: npx npm@6 publish ./modules.zip --registry=https://npm.pkg.github.com
+      - run: npx npm@6 publish modules.zip --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

@@ -33,7 +33,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-  call-workflow:
-   needs: publish-gpr
-   uses: hirenrparghi/reuse/.github/workflows/myworkflow.yml@main
+#   call-workflow:
+#    needs: publish-gpr
+#    uses: hirenrparghi/reuse/.github/workflows/myworkflow.yml@main
          

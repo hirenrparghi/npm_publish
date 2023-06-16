@@ -16,7 +16,6 @@ jobs:
           pwd
           ls -la
           cd ${{ github.workspace }}/modules
-          npm ci
           npm test
 
   publish-gpr:

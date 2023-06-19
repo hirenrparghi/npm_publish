@@ -36,7 +36,8 @@ jobs:
       - run: pwd    
       - run: |
            cd /home/runner/work/npm_publish/npm_publish/modules
-           npx npm@6 publish         
+           zip modules.zip ./* -r
+           npx npm@6 publish modules.zip        
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}           
 

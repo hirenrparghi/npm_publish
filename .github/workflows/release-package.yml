@@ -30,7 +30,7 @@ jobs:
           cd /home/runner/work/npm_publish/npm_publish/modules/
           ls -la
           yarn install          
-          yarn publish --registry=https://npm.pkg.github.com Modules.zip
+          yarn publish Modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}
 

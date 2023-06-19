@@ -19,6 +19,7 @@ jobs:
 
       - name: Pubish package
         run: |
+            cd modules
             zip Modules.zip ./* -r
             pwd
             ls -la

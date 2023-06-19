@@ -30,7 +30,7 @@ jobs:
           ls -la
           yarn install
           yarn pack modules package.zip
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=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" >> ~/.npmrc
           npm publish package.zip --registry=https://npm.pkg.github.com/hirenrparghi
           
 

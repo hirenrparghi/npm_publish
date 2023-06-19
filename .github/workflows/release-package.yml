@@ -34,7 +34,6 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: pwd    
-      - run: ./modules
       - run: npx npm@6 publish 
         
         env:

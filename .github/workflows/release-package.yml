@@ -24,7 +24,7 @@ jobs:
             pwd
             ls -la
             yarn install         
-            yarn publish 
+            yarn publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

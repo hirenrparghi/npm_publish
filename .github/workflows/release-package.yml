@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
+      - run: zip Modules.zip ./* -r    
       - run: yarn install    
       - run: yarn publish Modules.zip
         env:

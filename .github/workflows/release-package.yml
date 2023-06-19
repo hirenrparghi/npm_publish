@@ -16,7 +16,8 @@ jobs:
       - name: Build package
         working-directory: ${{ github.workspace }}/modules
         run: |
-           npm build
+           npm install
+           npm run build
            pwd
            ls -la
 

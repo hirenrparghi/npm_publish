@@ -28,7 +28,7 @@ jobs:
           ls -la
           mv Modules.zip /home/runner/work/npm_publish/npm_publish/modules/  
           cd /home/runner/work/npm_publish/npm_publish/modules/
-      - run: ls -la
+          ls -la
       - run: yarn install    
       - run: yarn publish Modules.zip
         env:

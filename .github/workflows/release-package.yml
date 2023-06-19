@@ -29,7 +29,13 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npx npm@6 publish ${{ github.workspace }}/modules/ --access public $(ls *.tar.gz)      
+      - name: Pubish package
+        run: |
+            zip Modules.zip ./* -r
+            mkdir Modules
+            unzip -o Modules.zip -d Modules            
+            yarn install         
+            yarn publish Modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

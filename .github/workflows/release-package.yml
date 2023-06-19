@@ -29,8 +29,8 @@ jobs:
           mv Modules.zip /home/runner/work/npm_publish/npm_publish/modules/  
           cd /home/runner/work/npm_publish/npm_publish/modules/
           ls -la
-      - run: yarn install    
-      - run: yarn publish Modules.zip
+          yarn install    
+          yarn publish Modules.zip
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

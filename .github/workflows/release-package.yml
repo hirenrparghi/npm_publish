@@ -15,23 +15,8 @@ jobs:
 
       - name: Build package
         working-directory: ${{ github.workspace }}/modules
-        run: npm test
+        run: npm run build
 
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-#       - run: zip Modules.zip ./* -r   
-      - run: |
-          pwd
-          ls -la
-          cd /home/runner/work/npm_publish/npm_publish/modules
-          ls -la
-          yarn install
-          yarn pack modules package.zip
-          echo "//npm.pkg.github.com/:_authToken=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" >> ~/.npmrc
-          npm publish package.zip --registry=https://npm.pkg.github.com/hirenrparghi --access public
           
 
 

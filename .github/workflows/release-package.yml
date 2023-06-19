@@ -22,17 +22,19 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: zip Modules.zip ./* -r   
+#       - run: zip Modules.zip ./* -r   
       - run: |
           pwd
           ls -la
           mv Modules.zip /home/runner/work/npm_publish/npm_publish/modules/  
           cd /home/runner/work/npm_publish/npm_publish/modules/
           ls -la
-          yarn install          
-          yarn publish Modules.zip
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          yarn install
+          yarn pack modules package.zip
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          npm publish package.zip --registry=https://npm.pkg.github.com/hirenrparghi
+          
+
 
 #   call-workflow:
 #    needs: publish-gpr

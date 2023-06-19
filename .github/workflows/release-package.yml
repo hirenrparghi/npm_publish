@@ -26,7 +26,7 @@ jobs:
       - run: |
           pwd
           ls -la
-          cd /home/runner/work/npm_publish/npm_publish
+          cd /home/runner/work/npm_publish/npm_publish/modules
           ls -la
           yarn install
           yarn pack modules package.zip

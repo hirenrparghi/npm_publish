@@ -27,10 +27,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: https://npm.pkg.github.com/
       - run: |
-          cd /home/runner/work/npm_publish/npm_publish/modules
-          zip Modules.zip ./* -r
+          cd /home/runner/work/npm_publish/npm_publish/modules       
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
           echo "@hirenrparghi:registry=https://npm.pkg.github.com" >> .npmrc
           npm publish --access public

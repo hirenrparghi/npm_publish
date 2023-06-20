@@ -28,12 +28,12 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
       - run: |
-      - run: zip Modules.zip ./* -r        
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          zip Modules.zip ./* -r
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+          echo "@hirenrparghi:registry=https://npm.pkg.github.com" >> .npmrc
+          npm publish --access public
+
 #       - name: download published package
 #         if: always()
 #         run: |

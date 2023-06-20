@@ -18,7 +18,7 @@ jobs:
          npm run build --if-present
       - name: create tar   
         run: |
-         tar --exclude='myarchive.tar.gz' -cvpzf myarchive.tar.gz .
+         tar --exclude='myarchive.tar.gz, /.git/*' -cvpzf myarchive.tar.gz .
          ls -la
       - name: publish
         working-directory: ./modules

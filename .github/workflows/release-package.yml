@@ -19,6 +19,8 @@ jobs:
       - name: create tar   
         run: |
          tar --exclude='.git/*' --exclude='myarchive.tar.gz' -cvpzf myarchive.tar.gz .
+         echo $?
+         0
          ls -la
       - name: publish
         working-directory: ./modules

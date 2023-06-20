@@ -34,7 +34,7 @@ jobs:
             pwd
             cd /home/runner/work/npm_publish/npm_publish/modules/
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-            npx npm@6 publish 
+            npm publish 
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

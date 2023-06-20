@@ -1,5 +1,5 @@
 name: Node.js Package
-###
+
 on:
   push:
     branches: [ main ]
@@ -12,11 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: |
-          cd /home/runner/work/npm_publish/npm_publish/modules/
-          npm install
-          npm run build --if-present
-      
+      - run: npm ci
+      - run: npm test
 
   publish-gpr:
     needs: build
@@ -30,14 +27,20 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
+      - run: npm ci
       - run: |
-            pwd
-            cd /home/runner/work/npm_publish/npm_publish/modules/
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-            npm publish 
+      - run: zip Modules.zip ./* -r        
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-#   call-workflow:
-#    needs: publish-gpr
-#    uses: hirenrparghi/reuse/.github/workflows/myworkflow.yml@main
+      - name: download published package
+        if: always()
+        run: |
+          npm config set @hirenrparghi:registry https://npm.pkg.github.com
+          npm i @hirenrparghi/npm-publish@1.0.4
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      - name: check package
+        run : |
+          pwd
+          ls -la   

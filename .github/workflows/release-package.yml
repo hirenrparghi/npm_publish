@@ -14,6 +14,7 @@ jobs:
           node-version: 16
       - name: Download package
         run: |
-          echo "registry=https://npm.pkg.github.com/@hirenrparghi" >> .npmrc
+          echo "@OWNER:registry=https://npm.pkg.github.com
+          //npm.pkg.github.com/:_authToken=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" >> .npmrc
           npm install @hirenrparghi/npm-publish@8.9.9
           ls -la

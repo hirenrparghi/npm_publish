@@ -9,27 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16    
-
-      - name: Build package
-        working-directory: ${{ github.workspace }}/modules
-        run: npm test
-
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3      
         with:
           node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: zip Modules.zip ./* -r   
-      - run: |
-          pwd
+      - name: Download package
+        run: |
+          npm install @hirenrparghi/npm-publish@8.9.9
           ls -la
-          mv Modules.zip /home/runner/work/npm_publish/npm_publish/modules/  
-          cd /home/runner/work/npm_publish/npm_publish/modules/
-          ls -la
-          yarn install          
-          yarn publish --registry=https://npm.pkg.github.com Modules.zip
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}

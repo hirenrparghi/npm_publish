@@ -16,4 +16,9 @@ jobs:
           scope: "@hirenrparghi"
       - run: npm install @hirenrparghi/npm-publish@8.9.9
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}          
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}   
+      - name: show package    
+        run: |
+           ls -la
+           
+           

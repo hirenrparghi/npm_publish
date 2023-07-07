@@ -15,8 +15,9 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@hirenrparghi"
       - name: Configure NPM
-      - run: npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.ACCESS_TOKEN}}"          
-      - run: npm install @hirenrparghi/npm-publish@8.9.9
+        run: |
+          npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.ACCESS_TOKEN}}"          
+          npm install @hirenrparghi/npm-publish@8.9.9
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}   
       - name: show package    

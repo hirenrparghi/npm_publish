@@ -1,5 +1,5 @@
 name: Node.js Package
-
+#
 on:
   push:
     branches: [ main ]
@@ -9,35 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16    
+
+      - name: Build package
+        working-directory: ${{ github.workspace }}/modules
+        run: npm test
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Download package
-        run: |
-          npm install @hirenrparghi/npm-publish@8.9.9
+          registry-url: https://npm.pkg.github.com/
+      - run: zip Modules.zip ./* -r   
+      - run: |
+          pwd
           ls -la
-#       - name: Build
-#         working-directory: ./modules
-#         run: |         
-#          npm run build --if-present
-#       - name: create tar   
-#         run: |
-#             tar -czvf archive.tar.gz ${{ github.workspace }}/modules/
-#       - name: publish
-#         working-directory: ./modules
-#         run: |
-#           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
-#           echo "@hirenrparghi:registry=https://npm.pkg.github.com" >> .npmrc
-#           npm publish --access public
-
-# #       - name: download published package
-# #         if: always()
-# #         run: |
-# #           npm config set @hirenrparghi:registry https://npm.pkg.github.com
-# #           npm i @hirenrparghi/npm-publish@1.0.4
-# #         env:
-# #           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-# #       - name: check package
-# #         run : |
-# #           pwd
-# #           ls -la   
+          mv Modules.zip /home/runner/work/npm_publish/npm_publish/modules/  
+          cd /home/runner/work/npm_publish/npm_publish/modules/
+          ls -la
+          yarn install          
+          yarn publish --registry=https://npm.pkg.github.com Modules.zip
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}

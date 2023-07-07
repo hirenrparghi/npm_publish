@@ -14,8 +14,8 @@ jobs:
           node-version: 16
       - name: Download package
         run: |
-          npm login --registy=https://npm.pkg.github.com --scope@hirenrparghi --always-auth
-          npm view @hirenrparghi/npm-publish@8.9.9 dist.tarball
+          npm install @hirenrparghi/npm-publish@8.9.9
+          ls -la
 #       - name: Build
 #         working-directory: ./modules
 #         run: |         

@@ -14,10 +14,11 @@ jobs:
           node-version: 16    
       - name: Build package
         run: |
-           npm run build
+           npm test
            pwd
            ls -la
   publish-gpr:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

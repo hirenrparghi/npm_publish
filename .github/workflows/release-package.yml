@@ -1,36 +1,22 @@
 name: Node.js Package
-
+#
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16    
-      - name: Build package
-        run: |
-           npm test
-           pwd
-           ls -la
   publish-gpr:
-    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: "@hirenrparghi"
       - name: check
         run: |
           ls -la
-             
       - name: Configure NPM
         run: |
           npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"          
@@ -40,5 +26,3 @@ jobs:
       - name: show package    
         run: |
            ls -la
-           
-           

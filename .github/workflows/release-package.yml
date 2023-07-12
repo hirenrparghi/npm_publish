@@ -17,6 +17,15 @@ jobs:
       - name: check
         run: |
           ls -la
+      - name: Clean Workspace
+        if: always()
+        run: |
+         ls -la
+         rm -rf ./* ./.[^.] ./.??*
+         ls -la            
+      - name: check
+        run: |
+          ls -la         
       - name: Configure NPM
         run: |
           npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"          
